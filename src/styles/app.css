@@ -1,0 +1,848 @@
+@import "tailwindcss";
+
+@import "@fontsource-variable/cinzel";
+@import "@fontsource-variable/outfit";
+@import "@fontsource-variable/oswald";
+@import "lenis/dist/lenis.css";
+
+/* ---------------------------------------------------------------------------
+   Tokens — DESIGN.md §2 (paleta), §5 (tipografía), §6 (forma y ritmo), §9
+   --------------------------------------------------------------------------- */
+
+@theme {
+  --color-black: #000000;
+  --color-gold: #dabc80;
+  --color-gold-bright: #ddc490;
+  --color-gold-deep: #cdb47c;
+  --color-gold-shadow: #cca85c;
+  --color-gold-ink: #8a6a28;
+
+  --color-surface: #0c0a08;
+  --color-surface-2: #1a1610;
+  --color-line: #2a2418;
+  --color-ivory: #f5f0e6;
+  --color-cream: #e8d8c4;
+  --color-white: #ffffff;
+
+  --font-display: "Cinzel Variable", "Times New Roman", serif;
+  --font-body: "Outfit Variable", system-ui, sans-serif;
+  --font-campaign: "Oswald Variable", system-ui, sans-serif;
+
+  --container-page: 1120px;
+
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+}
+
+@theme {
+  /* Gutters §6 y tamaño del sello del lockup §1 */
+  --spacing-gutter: 24px;
+  --spacing-seal: 44px;
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
+
+@layer base {
+  html {
+    /* Lenis lleva el scroll; sin él, el fallback nativo. §7 */
+    scroll-behavior: auto;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-black);
+    color: var(--color-ivory);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.65;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    line-height: 1.12;
+    text-wrap: balance;
+  }
+
+  /* Focus §3: anillo 2 px gold sobre black */
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background-color: var(--color-gold);
+    color: var(--color-black);
+  }
+
+  img,
+  video {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Utilidades de layout §6
+   --------------------------------------------------------------------------- */
+
+@utility shell {
+  width: 100%;
+  max-width: var(--container-page);
+  margin-inline: auto;
+  padding-inline: var(--spacing-gutter);
+
+  @media (width >= 1024px) {
+    padding-inline: 40px;
+  }
+}
+
+/* Padding vertical de sección: 56–80 px móvil, 80–120 px desktop */
+@utility section-y {
+  padding-block: 72px;
+
+  @media (width >= 768px) {
+    padding-block: 104px;
+  }
+
+  @media (width >= 1024px) {
+    padding-block: 128px;
+  }
+}
+
+@layer components {
+  /* -------------------------------------------------------------------------
+     Tipografía de marca §5
+     ------------------------------------------------------------------------- */
+
+  .kicker {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-gold-deep);
+  }
+
+  @media (width >= 768px) {
+    .kicker {
+      font-size: 0.8125rem;
+    }
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-gold);
+    font-size: clamp(2.25rem, 6.5vw, 4.5rem);
+    line-height: 1.06;
+  }
+
+  .h2 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-gold);
+    font-size: clamp(1.5rem, 3.4vw, 2rem);
+  }
+
+  .h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-gold);
+    font-size: 1.0625rem;
+  }
+
+  .lead {
+    font-size: clamp(1.0625rem, 1.6vw, 1.25rem);
+    line-height: 1.6;
+    color: var(--color-ivory);
+    max-width: 46ch;
+    text-wrap: pretty;
+  }
+
+  .campaign {
+    font-family: var(--font-campaign);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-gold);
+    font-size: clamp(1.75rem, 5vw, 3rem);
+    line-height: 1.05;
+  }
+
+  /* -------------------------------------------------------------------------
+     Lockup de navegación §1
+     ------------------------------------------------------------------------- */
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+  }
+
+  .brand-seal {
+    width: var(--spacing-seal);
+    height: var(--spacing-seal);
+    flex: none;
+  }
+
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+  }
+
+  /* El wordmark también se usa suelto (footer, panel móvil): la familia y las
+     versales viven en la propia pieza, no en el contenedor del lockup. */
+  .brand-name {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.14em;
+    color: var(--color-gold);
+    line-height: 1.15;
+    /* Las dos líneas del lockup se mantienen; ninguna se parte (§1) */
+    white-space: nowrap;
+    transition: color 220ms ease;
+  }
+
+  .brand-sub {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 0.5625rem;
+    letter-spacing: 0.14em;
+    color: var(--color-gold-deep);
+    line-height: 1.3;
+    white-space: nowrap;
+    transition: color 220ms ease;
+  }
+
+  .brand:hover .brand-name,
+  .brand:hover .brand-sub {
+    color: var(--color-gold-bright);
+  }
+
+  @media (width >= 768px) {
+    .brand-seal {
+      width: 48px;
+      height: 48px;
+    }
+
+    .brand-name {
+      font-size: 1.0625rem;
+      letter-spacing: 0.18em;
+    }
+
+    .brand-sub {
+      font-size: 0.6875rem;
+    }
+  }
+
+  /* -------------------------------------------------------------------------
+     Botones y enlaces §3 — radio 0, el oro es Reservar §11
+     ------------------------------------------------------------------------- */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    border-radius: 0;
+    border: 1px solid transparent;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    padding: 0.85em 1.6em;
+    cursor: pointer;
+    transition:
+      background-color 220ms ease,
+      color 220ms ease,
+      border-color 220ms ease;
+  }
+
+  @media (width >= 768px) {
+    .btn {
+      font-size: 0.875rem;
+    }
+  }
+
+  /* El CTA del header convive con el lockup en 390 px de ancho */
+  .btn-header {
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    padding: 0.8em 1.1em;
+  }
+
+  @media (width >= 640px) {
+    .btn-header {
+      font-size: 0.8125rem;
+      letter-spacing: 0.1em;
+      padding: 0.85em 1.6em;
+    }
+  }
+
+  .btn-primary {
+    background-color: var(--color-gold);
+    color: var(--color-black);
+    border-color: var(--color-gold);
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-gold-bright);
+    border-color: var(--color-gold-bright);
+  }
+
+  .btn-primary:active {
+    background-color: var(--color-gold-shadow);
+    border-color: var(--color-gold-shadow);
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: var(--color-gold);
+    border-color: var(--color-gold);
+  }
+
+  .btn-secondary:hover {
+    background-color: var(--color-gold);
+    color: var(--color-black);
+  }
+
+  .btn:disabled,
+  .btn[aria-disabled="true"] {
+    background-color: color-mix(in srgb, var(--color-gold-shadow) 40%, transparent);
+    border-color: transparent;
+    color: var(--color-black);
+    cursor: not-allowed;
+  }
+
+  .link-gold {
+    color: var(--color-gold);
+    text-decoration: underline;
+    text-decoration-color: var(--color-gold-deep);
+    text-underline-offset: 0.32em;
+    text-decoration-thickness: 1px;
+    transition: color 220ms ease, text-decoration-color 220ms ease;
+  }
+
+  .link-gold:hover {
+    color: var(--color-gold-bright);
+    text-decoration-color: var(--color-gold-bright);
+  }
+
+  /* También se usa en <button>: el CTA de cada card no navega en la maqueta */
+  .link-quiet {
+    color: var(--color-gold-deep);
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: none;
+    border: 0;
+    border-bottom: 1px solid transparent;
+    padding: 0 0 2px;
+    cursor: pointer;
+    transition: color 220ms ease, border-color 220ms ease;
+  }
+
+  .link-quiet:hover {
+    color: var(--color-gold-bright);
+    border-color: var(--color-gold-deep);
+  }
+
+  /* -------------------------------------------------------------------------
+     Filetes §3 — finos, nunca gordos §6
+     ------------------------------------------------------------------------- */
+
+  .rule {
+    height: 1px;
+    border: 0;
+    background-color: color-mix(in srgb, var(--color-gold-deep) 40%, transparent);
+  }
+
+  /* -------------------------------------------------------------------------
+     Marcos que citan el doble filete del sello §13.3
+     ------------------------------------------------------------------------- */
+
+  .frame-circle {
+    position: relative;
+    border-radius: 9999px;
+    padding: 10px;
+    background-color: var(--color-black);
+    border: 1px solid var(--color-gold-deep);
+  }
+
+  .frame-circle::after {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border-radius: 9999px;
+    border: 1px solid color-mix(in srgb, var(--color-gold-deep) 55%, transparent);
+    pointer-events: none;
+  }
+
+  .frame-circle picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .frame-circle img {
+    border-radius: 9999px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .frame-rect {
+    position: relative;
+    display: block;
+    border-radius: 0;
+    border: 1px solid var(--color-line);
+    background-color: var(--color-black);
+    overflow: hidden;
+    transition: border-color 260ms ease;
+  }
+
+  .frame-rect::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* Velo §13.2 — el tercio inferior, donde puede caer tipo */
+    background: linear-gradient(
+      to top,
+      color-mix(in srgb, var(--color-black) 72%, transparent) 0%,
+      transparent 42%
+    );
+    pointer-events: none;
+  }
+
+  .frame-rect:hover {
+    border-color: var(--color-gold-deep);
+  }
+
+  .frame-rect picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .frame-rect img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* -------------------------------------------------------------------------
+     Cards de servicio §12 — surface-2, filete line, radio 0
+     ------------------------------------------------------------------------- */
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    background-color: var(--color-surface-2);
+    border: 1px solid var(--color-line);
+    border-radius: 0;
+    padding: 28px 24px;
+    transition: border-color 260ms ease, background-color 260ms ease;
+  }
+
+  .card:hover {
+    border-color: color-mix(in srgb, var(--color-gold-deep) 55%, transparent);
+  }
+
+  .card p {
+    color: var(--color-ivory);
+    font-size: 0.9375rem;
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* -------------------------------------------------------------------------
+     Prueba social §12 — cinco filetes gold, sin estrellas multicolor
+     ------------------------------------------------------------------------- */
+
+  .rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9375rem;
+    color: var(--color-gold);
+    text-decoration: none;
+  }
+
+  .rating-marks {
+    display: inline-flex;
+    gap: 4px;
+  }
+
+  .rating-marks i {
+    display: block;
+    width: 5px;
+    height: 5px;
+    background-color: var(--color-gold);
+  }
+
+  .rating:hover .rating-value {
+    color: var(--color-gold-bright);
+  }
+
+  .rating-note {
+    color: color-mix(in srgb, var(--color-ivory) 60%, transparent);
+    font-size: 0.8125rem;
+  }
+
+  /* -------------------------------------------------------------------------
+     Banda clara puntual §13.4 — una sola vez en la página
+     ------------------------------------------------------------------------- */
+
+  .band-light {
+    background-color: var(--color-ivory);
+    color: var(--color-black);
+  }
+
+  .band-light .h2 {
+    color: var(--color-black);
+  }
+
+  .band-light .kicker {
+    color: var(--color-gold-ink);
+  }
+
+  .band-light p {
+    color: color-mix(in srgb, var(--color-black) 78%, transparent);
+  }
+
+  .band-light .link-gold {
+    color: var(--color-gold-ink);
+    text-decoration-color: color-mix(in srgb, var(--color-gold-ink) 60%, transparent);
+  }
+
+  .band-light .link-gold:hover {
+    color: var(--color-black);
+  }
+
+  /* -------------------------------------------------------------------------
+     Escena cinematográfica §7
+     ------------------------------------------------------------------------- */
+
+  .cinematic {
+    position: relative;
+    height: 100svh;
+    min-height: 560px;
+    overflow: hidden;
+    background-color: var(--color-black);
+  }
+
+  .cinematic video,
+  .cinematic .cinematic-poster {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 9:16 a sangre en móvil, recorte lateral en desktop §7 */
+    object-position: center 42%;
+  }
+
+  /* El poster solo entra en juego con prefers-reduced-motion */
+  .cinematic .cinematic-poster {
+    display: none;
+  }
+
+  /* Velo §13.2 — la tipografía se apoya siempre en zona oscura */
+  .cinematic-veil {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    /* El interior del salón es claro: sin este velo el oro del cierre no
+       llega a contraste sobre la pared. */
+    background: linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-black) 72%, transparent) 0%,
+      transparent 24%,
+      transparent 38%,
+      color-mix(in srgb, var(--color-black) 68%, transparent) 66%,
+      color-mix(in srgb, var(--color-black) 92%, transparent) 100%
+    );
+  }
+
+  .cinematic-copy {
+    position: absolute;
+    inset-inline: 0;
+    bottom: clamp(56px, 12vh, 132px);
+    text-align: center;
+    padding-inline: var(--spacing-gutter);
+  }
+
+  .cinematic-hint {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 28px;
+    text-align: center;
+  }
+
+  /* -------------------------------------------------------------------------
+     Header §1 / §6
+     ------------------------------------------------------------------------- */
+
+  .site-header {
+    position: fixed;
+    inset-block-start: 0;
+    inset-inline: 0;
+    z-index: 50;
+    border-bottom: 1px solid transparent;
+    transition:
+      background-color 260ms ease,
+      border-color 260ms ease,
+      backdrop-filter 260ms ease;
+  }
+
+  .site-header.is-scrolled {
+    background-color: color-mix(in srgb, var(--color-surface-2) 90%, transparent);
+    backdrop-filter: blur(14px) saturate(140%);
+    border-bottom-color: var(--color-line);
+  }
+
+  .nav-link {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-ivory);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    transition: color 220ms ease;
+  }
+
+  .nav-link:hover,
+  .nav-link[aria-current="true"] {
+    color: var(--color-gold);
+  }
+
+  /* Panel de anclas a pantalla §6 */
+  .nav-panel {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    background-color: var(--color-surface-2);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 260ms ease, visibility 260ms ease;
+  }
+
+  .nav-panel.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .nav-panel nav a {
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 1.375rem;
+    color: var(--color-gold);
+    text-decoration: none;
+    padding-block: 0.6rem;
+  }
+
+  /* Botón hamburguesa: dos filetes finos, no un icono gris genérico */
+  .nav-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+    width: 40px;
+    height: 40px;
+    padding: 0 6px;
+    background: none;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .nav-toggle span {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: var(--color-gold);
+    transition: transform 240ms ease, opacity 240ms ease;
+  }
+
+  .nav-toggle[aria-expanded="true"] span:first-child {
+    transform: translateY(3.5px) rotate(45deg);
+  }
+
+  .nav-toggle[aria-expanded="true"] span:last-child {
+    transform: translateY(-3.5px) rotate(-45deg);
+  }
+
+  /* -------------------------------------------------------------------------
+     Mapa de marca §13 — surface-2, no un iframe blanco a sangre
+     ------------------------------------------------------------------------- */
+
+  .map-panel {
+    position: relative;
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    background-color: var(--color-surface-2);
+    border: 1px solid var(--color-line);
+    overflow: hidden;
+    transition: border-color 260ms ease;
+  }
+
+  .map-panel:hover {
+    border-color: var(--color-gold-deep);
+  }
+
+  .map-panel picture:first-child,
+  .map-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .map-image {
+    object-fit: cover;
+    filter: saturate(0.65) brightness(0.78) sepia(0.18);
+  }
+
+  .map-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 42%,
+      color-mix(in srgb, var(--color-black) 48%, transparent) 100%
+    );
+  }
+
+  .map-pin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+    translate: -50% -50%;
+    width: 56px;
+    height: 56px;
+  }
+
+  .map-credit {
+    position: absolute;
+    right: 10px;
+    bottom: 8px;
+    z-index: 2;
+    font-size: 0.625rem;
+    letter-spacing: 0.04em;
+    color: var(--color-ivory);
+    background-color: color-mix(in srgb, var(--color-black) 55%, transparent);
+    padding: 0.15em 0.45em;
+  }
+
+  /* -------------------------------------------------------------------------
+     Reveal §6 — fades 200–300 ms, nada de bounces
+     ------------------------------------------------------------------------- */
+
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 300ms ease,
+      transform 300ms ease;
+  }
+
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 100;
+    background-color: var(--color-gold);
+    color: var(--color-black);
+    padding: 0.75rem 1.25rem;
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8125rem;
+  }
+
+  .skip-link:focus {
+    left: 1rem;
+    top: 1rem;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Accesibilidad §7 — sin pin ni scrub
+   --------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* La escena queda quieta: el still hace de "tapa" y el copy se lee de
+     entrada. Algo más baja que el viewport para que se note que hay página. */
+  .cinematic {
+    height: 82svh;
+  }
+
+  .cinematic video {
+    display: none;
+  }
+
+  .cinematic .cinematic-poster {
+    display: block;
+  }
+
+  .cinematic-hint {
+    display: none;
+  }
+}

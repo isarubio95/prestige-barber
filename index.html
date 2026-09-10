@@ -1,0 +1,573 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Prestige Barber Studio · Barbería en Logroño</title>
+    <meta
+      name="description"
+      content="Estudio de barbería en Santa Justa, Logroño. Corte, barba y diseño a máquina, sin prisa."
+    />
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="icon" type="image/png" sizes="64x64" href="/assets/brand/logo-64.png" />
+    <link rel="apple-touch-icon" href="/assets/brand/logo-180.png" />
+
+    <link rel="preload" as="image" href="/assets/video/salon-arte-libre-poster.jpg" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#estudio">Saltar al contenido</a>
+
+    <!-- ===================================================================
+         Header — lockup §1 + anclas §11 + CTA único
+         =================================================================== -->
+    <header class="site-header" data-header>
+      <div class="shell flex h-[72px] items-center justify-between gap-4 md:h-20">
+        <a class="brand" href="#hero" aria-label="Prestige Barber Studio, ir al inicio">
+          <picture>
+            <source
+              type="image/webp"
+              srcset="
+                /assets/brand/logo-128.webp 128w,
+                /assets/brand/logo-180.webp 180w,
+                /assets/brand/logo-256.webp 256w
+              "
+              sizes="(max-width: 640px) 44px, 48px"
+            />
+            <img
+              class="brand-seal"
+              src="/assets/brand/logo-256.png"
+              srcset="
+                /assets/brand/logo-128.png 128w,
+                /assets/brand/logo-180.png 180w,
+                /assets/brand/logo-256.png 256w
+              "
+              sizes="(max-width: 640px) 44px, 48px"
+              width="48"
+              height="48"
+              alt=""
+            />
+          </picture>
+          <span class="brand-text">
+            <span class="brand-name">Prestige</span>
+            <span class="brand-sub">Barber Studio</span>
+          </span>
+        </a>
+
+        <nav class="hidden items-center gap-9 lg:flex" aria-label="Secciones">
+          <a class="nav-link" href="#estudio">El estudio</a>
+          <a class="nav-link" href="#servicios">Servicios</a>
+          <a class="nav-link" href="#galeria">Galería</a>
+          <a class="nav-link" href="#ubicacion">Dónde</a>
+        </nav>
+
+        <div class="flex items-center gap-2">
+          <button type="button" class="btn btn-primary btn-header">
+            <span class="sm:hidden">Reservar</span>
+            <span class="hidden sm:inline">Reservar cita</span>
+          </button>
+          <button
+            type="button"
+            class="nav-toggle lg:hidden"
+            data-nav-toggle
+            aria-expanded="false"
+            aria-controls="nav-panel"
+            aria-label="Abrir menú"
+          >
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Panel de anclas a pantalla §6 -->
+    <div class="nav-panel" id="nav-panel" data-nav-panel inert>
+      <div class="shell flex h-[72px] items-center justify-between md:h-20">
+        <span class="brand-text">
+          <span class="brand-name">Prestige</span>
+          <span class="brand-sub">Barber Studio</span>
+        </span>
+        <button
+          type="button"
+          class="nav-toggle"
+          data-nav-close
+          aria-expanded="true"
+          aria-label="Cerrar menú"
+        >
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+      <nav class="shell flex flex-1 flex-col justify-center gap-2" aria-label="Secciones">
+        <a href="#hero">Inicio</a>
+        <a href="#estudio">El estudio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#galeria">Galería</a>
+        <a href="#ubicacion">Dónde</a>
+      </nav>
+      <div class="shell pb-12">
+        <hr class="rule mb-6" />
+        <a class="link-gold" href="tel:+34677716882">677 71 68 82</a>
+      </div>
+    </div>
+
+    <main>
+      <!-- =================================================================
+           1. #hero — escena cinematográfica §7, ritmo §8
+           ================================================================= -->
+      <section id="hero" class="cinematic" data-cinematic>
+        <video
+          data-cinematic-video
+          src="/assets/video/salon-arte-libre-scrub.mp4"
+          poster="/assets/video/salon-arte-libre-poster.jpg"
+          muted
+          playsinline
+          preload="auto"
+          disablepictureinpicture
+          aria-label="Diseño a máquina en el estudio, freestyle"
+        ></video>
+
+        <img
+          class="cinematic-poster"
+          src="/assets/video/salon-arte-libre-poster.jpg"
+          width="720"
+          height="1280"
+          alt="Nuca con diseño freestyle a máquina, terminado, en el estudio"
+        />
+
+        <div class="cinematic-veil"></div>
+
+        <div class="cinematic-copy" data-hero-copy>
+          <p class="display">Logroño.<br />A máquina.<br />Sin prisa.</p>
+          <p
+            class="mt-6 font-display text-[0.6875rem] font-normal tracking-[0.28em] text-gold-deep uppercase md:text-xs"
+          >
+            Prestige Barber Studio
+          </p>
+          <button type="button" class="btn btn-primary mt-8">Reservar cita</button>
+        </div>
+
+        <p class="cinematic-hint kicker" data-hero-hint>Desliza</p>
+      </section>
+
+      <!-- =================================================================
+           2. #estudio
+           ================================================================= -->
+      <section id="estudio" class="section-y bg-black">
+        <div class="shell grid items-center gap-14 lg:grid-cols-[1fr_360px] lg:gap-20">
+          <div data-reveal>
+            <p class="kicker">Logroño</p>
+            <h2 class="h2 mt-4">El estudio</h2>
+            <p class="lead mt-6">
+              Estudio de barbería en Santa Justa. Corte, barba y diseño a máquina, sin
+              prisa.
+            </p>
+            <p class="mt-6 text-ivory/70">Jey.</p>
+
+            <a
+              class="rating mt-10"
+              href="https://www.google.com/maps/place/Prestige+Barber+Studio/@42.462908,-2.4571974,17z/data=!4m8!3m7!1s0xd5aab9047789883:0x2bd7ebc4b786b460!8m2!3d42.462908!4d-2.4571974!9m1!1b1"
+              target="_blank"
+              rel="noopener"
+            >
+              <span class="rating-marks" aria-hidden="true">
+                <i></i><i></i><i></i><i></i><i></i>
+              </span>
+              <span class="rating-value">5,0 en Google</span>
+              <span class="rating-note">Ver reseñas</span>
+            </a>
+          </div>
+
+          <figure class="frame-circle mx-auto aspect-square w-full max-w-[360px]" data-reveal>
+            <picture>
+              <source type="image/webp" srcset="/assets/photo/jey-trabajando.webp" />
+              <img
+                src="/assets/photo/jey-trabajando.jpg"
+                width="470"
+                height="600"
+                loading="lazy"
+                decoding="async"
+                alt="Jey cortando el pelo a un cliente junto al ventanal del estudio"
+              />
+            </picture>
+          </figure>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           3. #servicios — carta sin precios §12
+           ================================================================= -->
+      <section id="servicios" class="section-y bg-surface">
+        <div class="shell">
+          <div data-reveal>
+            <p class="kicker">La carta</p>
+            <h2 class="h2 mt-4">Servicios</h2>
+          </div>
+
+          <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <article class="card" data-reveal>
+              <h3 class="h3">Corte</h3>
+              <p>El servicio de base.</p>
+              <button type="button" class="link-quiet mt-4 self-start">Reservar</button>
+            </article>
+
+            <article class="card" data-reveal>
+              <h3 class="h3">Corte + cejas</h3>
+              <p>Corte y cejas en la misma cita.</p>
+              <button type="button" class="link-quiet mt-4 self-start">Reservar</button>
+            </article>
+
+            <article class="card" data-reveal>
+              <h3 class="h3">Corte + barba</h3>
+              <p>Combo habitual.</p>
+              <button type="button" class="link-quiet mt-4 self-start">Reservar</button>
+            </article>
+
+            <article class="card" data-reveal>
+              <h3 class="h3">Corte premium</h3>
+              <p>El servicio más completo de la carta.</p>
+              <button type="button" class="link-quiet mt-4 self-start">Reservar</button>
+            </article>
+
+            <article class="card" data-reveal>
+              <h3 class="h3">Barba o cejas</h3>
+              <p>Por separado, cuando solo toca eso.</p>
+              <button type="button" class="link-quiet mt-4 self-start">Reservar</button>
+            </article>
+
+            <article class="card" data-reveal>
+              <h3 class="h3">Diseño a máquina</h3>
+              <p>El freestyle del vídeo.</p>
+              <button type="button" class="link-quiet mt-4 self-start">Reservar</button>
+            </article>
+          </div>
+
+          <div
+            class="mt-14 flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-center"
+            data-reveal
+          >
+            <p class="text-ivory/70">También a domicilio. Consúltalo al reservar.</p>
+            <button type="button" class="btn btn-secondary">Reservar cita</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           4. #galeria — grid 1 + 2, no un feed §8 / §13
+           ================================================================= -->
+      <section id="galeria" class="section-y bg-black">
+        <div class="shell">
+          <div data-reveal>
+            <p class="kicker">El sitio</p>
+            <h2 class="h2 mt-4">Galería</h2>
+          </div>
+
+          <div class="mt-14 grid gap-6 md:h-[620px] md:grid-cols-3 md:grid-rows-2 md:gap-8">
+            <figure
+              class="frame-rect aspect-4/5 md:row-span-2 md:aspect-auto"
+              data-reveal
+            >
+              <img
+                src="/assets/video/salon-arte-libre-poster.jpg"
+                width="720"
+                height="1280"
+                loading="lazy"
+                decoding="async"
+                alt="Diseño freestyle a máquina terminado sobre el lateral de la cabeza"
+              />
+            </figure>
+
+            <figure class="frame-rect aspect-4/3 md:aspect-auto" data-reveal>
+              <picture>
+                <source type="image/webp" srcset="/assets/photo/sello-cristal.webp" />
+                <img
+                  src="/assets/photo/sello-cristal.jpg"
+                  width="330"
+                  height="330"
+                  loading="lazy"
+                  decoding="async"
+                  alt="Sello de Prestige Barber Studio vinilado en el ventanal del local"
+                />
+              </picture>
+            </figure>
+
+            <figure class="frame-rect aspect-4/3 md:aspect-auto" data-reveal>
+              <picture>
+                <source type="image/webp" srcset="/assets/photo/producto.webp" />
+                <img
+                  src="/assets/photo/producto.jpg"
+                  width="420"
+                  height="260"
+                  loading="lazy"
+                  decoding="async"
+                  alt="Ceras y aceites de barba sobre el mostrador"
+                />
+              </picture>
+            </figure>
+
+            <figure
+              class="frame-rect aspect-16/9 md:col-span-2 md:aspect-auto"
+              data-reveal
+            >
+              <picture>
+                <source type="image/webp" srcset="/assets/photo/sillon-oro.webp" />
+                <img
+                  src="/assets/photo/sillon-oro.jpg"
+                  width="380"
+                  height="300"
+                  loading="lazy"
+                  decoding="async"
+                  alt="Pie dorado del sillón bajo la capa del cliente"
+                />
+              </picture>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- Banda clara puntual §13.4 — el local como es, una sola vez -->
+      <section class="band-light section-y">
+        <div class="shell grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
+          <div data-reveal>
+            <p class="kicker">Tal cual es</p>
+            <h2 class="h2 mt-4">Luz de calle</h2>
+            <p class="mt-6 max-w-[46ch] text-lg leading-relaxed">
+              Un local a pie de calle, con el ventanal abierto a Santa Justa. Ni sótano ni
+              humo: se corta con la luz que entra.
+            </p>
+            <a class="link-gold mt-8 inline-block" href="#ubicacion">Cómo llegar</a>
+          </div>
+
+          <figure data-reveal>
+            <picture>
+              <source type="image/webp" srcset="/assets/photo/salon.webp" />
+              <img
+                src="/assets/photo/salon.jpg"
+                width="1170"
+                height="820"
+                loading="lazy"
+                decoding="async"
+                alt="Vista general del estudio: sillón, mostrador de producto y ventanal a la calle"
+              />
+            </picture>
+          </figure>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           5. #ubicacion
+           ================================================================= -->
+      <section id="ubicacion" class="section-y bg-black">
+        <div class="shell">
+          <div data-reveal>
+            <p class="kicker">Dónde</p>
+            <h2 class="h2 mt-4">Santa Justa, 1</h2>
+          </div>
+
+          <div class="mt-14 grid gap-14 lg:grid-cols-2 lg:gap-20">
+            <div data-reveal>
+              <address class="not-italic">
+                <p class="text-xl text-ivory">Santa Justa,&nbsp;1 · 26005&nbsp;Logroño</p>
+                <p class="mt-4">
+                  <a class="link-gold text-lg" href="tel:+34677716882">677 71 68 82</a>
+                  <span class="ml-3 text-sm text-ivory/60">Llamar</span>
+                </p>
+              </address>
+
+              <a
+                class="rating mt-8"
+                href="https://www.google.com/maps/place/Prestige+Barber+Studio/@42.462908,-2.4571974,17z/data=!4m8!3m7!1s0xd5aab9047789883:0x2bd7ebc4b786b460!8m2!3d42.462908!4d-2.4571974!9m1!1b1"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="rating-marks" aria-hidden="true">
+                  <i></i><i></i><i></i><i></i><i></i>
+                </span>
+                <span class="rating-value">5,0 en Google</span>
+                <span class="rating-note">Ver reseñas</span>
+              </a>
+
+              <hr class="rule my-10" />
+
+              <h3 class="h3">Horario</h3>
+              <dl class="mt-5 tabular-nums">
+                <div class="flex justify-between gap-6 border-b border-line py-2.5">
+                  <dt>Lunes</dt>
+                  <dd class="text-ivory/85">16:00–20:00</dd>
+                </div>
+                <div class="flex justify-between gap-6 border-b border-line py-2.5">
+                  <dt>Martes</dt>
+                  <dd class="text-ivory/85">9:30–13:30 · 16:00–20:00</dd>
+                </div>
+                <div class="flex justify-between gap-6 border-b border-line py-2.5">
+                  <dt>Miércoles</dt>
+                  <dd class="text-ivory/85">9:30–13:30 · 16:00–20:00</dd>
+                </div>
+                <div class="flex justify-between gap-6 border-b border-line py-2.5">
+                  <dt>Jueves</dt>
+                  <dd class="text-ivory/85">9:30–13:30 · 16:00–20:00</dd>
+                </div>
+                <div class="flex justify-between gap-6 border-b border-line py-2.5">
+                  <dt>Viernes</dt>
+                  <dd class="text-ivory/85">9:30–13:30 · 16:00–20:00</dd>
+                </div>
+                <div class="flex justify-between gap-6 border-b border-line py-2.5">
+                  <dt>Sábado</dt>
+                  <dd class="text-ivory/85">11:00–14:00</dd>
+                </div>
+                <div class="flex justify-between gap-6 py-2.5 text-ivory/60">
+                  <dt>Domingo</dt>
+                  <dd>Cerrado</dd>
+                </div>
+              </dl>
+            </div>
+
+            <div data-reveal>
+              <a
+                class="map-panel aspect-4/3 w-full"
+                href="https://maps.google.com/?cid=3159252893748868192"
+                target="_blank"
+                rel="noopener"
+                aria-label="Abrir Prestige Barber Studio en Google Maps"
+              >
+                <picture>
+                  <source type="image/webp" srcset="/assets/photo/mapa.webp" />
+                  <img
+                    class="map-image"
+                    src="/assets/photo/mapa.jpg"
+                    width="1600"
+                    height="1200"
+                    loading="lazy"
+                    decoding="async"
+                    alt="Mapa de Santa Justa, 1, en Logroño"
+                  />
+                </picture>
+
+                <picture>
+                  <source
+                    type="image/webp"
+                    srcset="/assets/brand/logo-128.webp 128w, /assets/brand/logo-256.webp 256w"
+                    sizes="56px"
+                  />
+                  <img
+                    class="map-pin"
+                    src="/assets/brand/logo-128.png"
+                    width="56"
+                    height="56"
+                    alt=""
+                  />
+                </picture>
+
+                <span class="map-credit">© OpenStreetMap</span>
+              </a>
+
+              <p class="mt-6">
+                <a
+                  class="link-gold"
+                  href="https://maps.google.com/?cid=3159252893748868192"
+                  target="_blank"
+                  rel="noopener"
+                  >Abrir en Google Maps</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================
+           6. CTA de cierre §11 — sello grande §1 + línea Oswald §5
+           ================================================================= -->
+      <section class="section-y bg-surface text-center">
+        <div class="shell flex flex-col items-center" data-reveal>
+          <picture>
+            <source
+              type="image/webp"
+              srcset="/assets/brand/logo-256.webp 256w, /assets/brand/logo-512.webp 512w"
+              sizes="(max-width: 640px) 168px, 224px"
+            />
+            <img
+              src="/assets/brand/logo-512.png"
+              width="224"
+              height="224"
+              loading="lazy"
+              decoding="async"
+              alt="Prestige Barber Studio"
+              class="w-42 md:w-56"
+            />
+          </picture>
+
+          <p class="campaign mt-12">Reserva tu cita en Prestige</p>
+
+          <button type="button" class="btn btn-primary mt-10">Reservar cita</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================================================================
+         Footer
+         =================================================================== -->
+    <footer class="border-t border-line bg-black py-14">
+      <div class="shell">
+        <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+          <div>
+            <p class="brand-name">Prestige</p>
+            <p class="brand-sub">Barber Studio</p>
+          </div>
+
+          <div class="text-sm leading-7">
+            <p class="text-ivory/70">Santa Justa, 1</p>
+            <p class="text-ivory/70">26005 Logroño</p>
+            <p><a class="link-gold" href="tel:+34677716882">677 71 68 82</a></p>
+          </div>
+
+          <div class="text-sm leading-7">
+            <p>
+              <a
+                class="link-gold"
+                href="https://www.instagram.com/prestigebarber.s/"
+                target="_blank"
+                rel="noopener"
+                >@prestigebarber.s</a
+              >
+            </p>
+            <p>
+              <a
+                class="link-gold"
+                href="https://www.facebook.com/jeybarbiere/"
+                target="_blank"
+                rel="noopener"
+                >jeybarbiere</a
+              >
+            </p>
+            <p>
+              <a
+                class="link-gold"
+                href="https://www.google.com/maps/place/Prestige+Barber+Studio/@42.462908,-2.4571974,17z/data=!4m8!3m7!1s0xd5aab9047789883:0x2bd7ebc4b786b460!8m2!3d42.462908!4d-2.4571974!9m1!1b1"
+                target="_blank"
+                rel="noopener"
+                >5,0 en Google</a
+              >
+            </p>
+          </div>
+
+          <div class="text-sm leading-7">
+            <p><a class="link-gold" href="#">Reservar cita</a></p>
+            <p><a class="text-ivory/40" href="#" aria-disabled="true">Aviso legal</a></p>
+            <p><a class="text-ivory/40" href="#" aria-disabled="true">Privacidad</a></p>
+          </div>
+        </div>
+
+        <hr class="rule my-10" />
+
+        <p class="text-xs tracking-[0.06em] text-ivory/50">
+          © Prestige Barber Studio · Logroño
+        </p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
