@@ -4,6 +4,10 @@ import Lenis from "lenis";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Sin esto, al ocultarse la barra de iOS el viewport cambia y el pin/scrub
+// se recálcula a mitad de gesto: el clip parece no avanzar con el dedo.
+ScrollTrigger.config({ ignoreMobileResize: true });
+
 const reducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 export const prefersReducedMotion = () => reducedMotionQuery.matches;

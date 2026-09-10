@@ -612,6 +612,8 @@
     min-height: 560px;
     overflow: hidden;
     background-color: var(--color-black);
+    /* El vídeo a sangre captura el swipe en iOS; pan-y lo entrega al scroll. */
+    touch-action: pan-y;
   }
 
   .cinematic video,
@@ -623,6 +625,10 @@
     object-fit: cover;
     /* 9:16 a sangre en móvil, recorte lateral en desktop §7 */
     object-position: center 42%;
+  }
+
+  .cinematic video {
+    pointer-events: none;
   }
 
   /* El poster solo entra en juego con prefers-reduced-motion */
@@ -653,6 +659,11 @@
     bottom: clamp(56px, 12vh, 132px);
     text-align: center;
     padding-inline: var(--spacing-gutter);
+    pointer-events: none;
+  }
+
+  .cinematic-copy .btn {
+    pointer-events: auto;
   }
 
   .cinematic-hint {
@@ -660,6 +671,7 @@
     inset-inline: 0;
     bottom: 28px;
     text-align: center;
+    pointer-events: none;
   }
 
   /* -------------------------------------------------------------------------
